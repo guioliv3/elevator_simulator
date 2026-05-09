@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS elevator_requests (
+  id SERIAL PRIMARY KEY,
+  floor INTEGER NOT NULL,
+  status TEXT NOT NULL,
+  requested_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS elevator_events (
+  id SERIAL PRIMARY KEY,
+  event_type TEXT NOT NULL,
+  floor INTEGER NOT NULL,
+  direction TEXT NOT NULL,
+  queue INTEGER[] NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
