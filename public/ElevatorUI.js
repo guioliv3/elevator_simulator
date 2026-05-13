@@ -4,6 +4,9 @@ const maxFloor = 8;
 const panel = document.getElementById("panel");
 const elevator = document.getElementById("elevator");
 const status = document.getElementById("status");
+const infoFloor = document.getElementById("info-floor");
+const infoDirection = document.getElementById("info-direction");
+const infoQueue = document.getElementById("info-queue");
 
 for (let i = maxFloor; i >= minFloor; i -= 2) {
   const row = document.createElement("div");
@@ -45,7 +48,17 @@ async function update() {
   elevator.style.bottom = floorToBottom(state.currentFloor) + "px";
 
   status.innerText =
-    `Andar: ${state.currentFloor} | Direção: ${state.direction} | Fila: [${state.queue.join(", ")}]`;
+    `Andar: ${state.currentFloor} | Direcao: ${state.direction} | Fila: [${state.queue.join(", ")}]`;
+
+  infoFloor.innerText = String(state.currentFloor);
+  if (state.direction === "up") {
+    infoDirection.innerText = "↑";
+  } else if (state.direction === "down") {
+    infoDirection.innerText = "↓";
+  } else {
+    infoDirection.innerText = "parado";
+  }
+  infoQueue.innerText = state.queue.length ? state.queue.join(", ") : "vazia";
 
   const justStopped = state.justStoppedAt;
 

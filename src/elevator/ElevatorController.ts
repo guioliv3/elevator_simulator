@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { ElevatorService } from "./ElevatorService";
-import { logRequest } from "../infra/Database";
 
 export class ElevatorController {
   constructor(private readonly service: ElevatorService) {}
@@ -13,7 +12,7 @@ export class ElevatorController {
     res.json({ queue: this.service.getState().queue });
   };
 
-  requestFloor = async (req: Request, res: Response): Promise<void> => {
+  requestFloor = (req: Request, res: Response): void => {
     const floor = Number(req.body?.floor);
     const result = this.service.enqueue(floor);
 
@@ -22,7 +21,6 @@ export class ElevatorController {
       return;
     }
 
-    await logRequest(floor);
     res.status(202).json({ accepted: true });
   };
 

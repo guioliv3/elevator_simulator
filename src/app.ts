@@ -8,10 +8,10 @@ export function createApp(service: ElevatorService) {
 
   app.use(express.json());
 
-  // 🔥 serve o front (HTML)
+  //  serve o front (HTML)
   app.use(express.static(path.join(__dirname, "../public")));
 
-  // 🔥 API do elevador
+  // API do elevador
   app.use("/api", createElevatorRoutes(service));
 
   return app;

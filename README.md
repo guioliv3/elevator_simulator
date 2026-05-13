@@ -5,7 +5,6 @@ Backend em TypeScript + Express que simula um elevador com fila e interpolacao d
 ## Requisitos
 
 - Node.js 18+
-- PostgreSQL 14+
 
 ## Instalacao
 
@@ -14,25 +13,6 @@ Backend em TypeScript + Express que simula um elevador com fila e interpolacao d
 	 ```bash
 	 npm install
 	 ```
-
-## Banco de dados
-
-1. Crie um banco chamado `elevator`.
-2. Aplique o schema:
-
-	 ```bash
-	 psql -d elevator -f db/schema.sql
-	 ```
-
-3. Configure a variavel `DATABASE_URL`.
-
-	 Copie `.env.example` para `.env` e ajuste o valor:
-
-	 ```bash
-	 DATABASE_URL=postgres://user:password@localhost:5432/elevator
-	 ```
-
-Observacao: se `DATABASE_URL` nao estiver definido, o app roda sem gravar eventos no banco.
 
 ## Executar
 
